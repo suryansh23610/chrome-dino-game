@@ -1,0 +1,21 @@
+''' this is a bot which automatically plays dinosaur game'''
+import pyautogui as p # you need to import this module
+import time
+from PIL import ImageGrab # pyautogui module can be used here in place of this but that is more accurate in getting pixels values.
+
+print('playing')
+y=1
+while True:
+    try:
+        time.sleep(.01)#used to slow down the iteration otherwise infinite while lopp cam make your system slow
+        
+           '''you have to play the game for a bit and get the idea about where our game obstacles comes on your screen and get the position of that point using function p.position()
+              and put that value in get pixel method
+              '''
+      
+        x= ImageGrab.grab().getpixel((736 ,311)) #get the pixel combination of that spot on screen  
+        if x!=y: # if game obstacles comes on that spot check for the pixel and if true execute the operation
+            p.press('space') # used to make the dino jump
+            y=x #make them equal to ensure that our dino take rest when there is no obstacles
+    except KeyboardInterrupt: # used to get out of loop and print done
+        print('done')
